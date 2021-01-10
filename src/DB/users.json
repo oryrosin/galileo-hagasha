@@ -1,16 +1,18 @@
 [
     {
         "id": 1,
-        "fname": "Nir",
-        "lname": "Channes",
-        "email": "nir@nir.com",
-        "pwd": "123"      
+        "fname": "Ory",
+        "lname": "Rosin",
+        "email": "ory@ory.com",
+        "pwd": "123",
+        "role": "user"      
     },
     {
-        "id": 1,
-        "fname": "John",
-        "lname": "Doe",
-        "email": "john@john.com",
-        "pwd": "123"      
+        "id": 2,
+        "fname": "Or",
+        "lname": "Calderon",
+        "email": "or@or.com",
+        "pwd": "123",
+        "role": "admin"      
     }
 ]

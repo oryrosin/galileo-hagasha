@@ -1,7 +1,7 @@
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 
-function RecipeNavbr(props) {
+function MyNavbar(props) {
     const {activeUser, onLogout} = props;
 
     return (
@@ -22,4 +22,4 @@ function RecipeNavbr(props) {
     )
 }
 
-export default RecipeNavbr;
+export default MyNavbar;

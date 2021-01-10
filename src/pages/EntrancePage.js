@@ -1,5 +1,5 @@
 import { Redirect } from "react-router-dom";
-import Navbr from "../../components/Navbar";
+import Navbr from "../components/MyNavbar";
 
 function EntrancePage(props) {
     const {activeUser, onLogout} = props;

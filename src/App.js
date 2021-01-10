@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import EntrancePage from './pages/EntrancePage';
