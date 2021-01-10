@@ -1,0 +1,17 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    background-color: #343A40;
+    
+    color: cornsilk;
+    height: 600px;
+
+}
+
+.sidebar>.btn{
+    width: 80%;
+    height: 100px;
+    margin: 10px auto;
+    
+} 
+

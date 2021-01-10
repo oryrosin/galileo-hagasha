@@ -4,10 +4,10 @@ import { Link, Redirect } from "react-router-dom";
 import './LoginPage.css'
 
 function LoginPage(props) {
-    const [email, setEmail] = useState("nir@nir.com");
-    const [pwd, setPwd] = useState("123");
+    const [email, setEmail] = useState("ory@ory.com");
+    const [pwd, setPwd] = useState("1234");
     const [showLoginError, setShowLoginError] = useState(false);
-    const [redirectToRecipes, setRedirectToRecipes] = useState(false);
+    const [redirectToEntrance, setRedirectToEntrance] = useState(false);
     const {users, onLogin} = props;
     
     function login() {
@@ -18,7 +18,7 @@ function LoginPage(props) {
         if (userFound) {
             // Trigger onLogin event prop + update redirect state so we will redirect to recipes page
             onLogin(userFound);
-            setRedirectToRecipes(true);
+            setRedirectToEntrance(true);
         } else {
             // show an error alert
             setShowLoginError(true);
@@ -26,13 +26,13 @@ function LoginPage(props) {
     }
 
 
-    if (redirectToRecipes) {
-        return <Redirect to="/recipes"/>;
+    if (redirectToEntrance) {
+        return <Redirect to="/entrance"/>;
     }
 
     return (
         <div className="p-login">
-            <h1>Login to Recipe Book</h1>
+            <h1>Login to Galil system</h1>
             <p>or <Link to="/signup">create an account</Link></p>
             {showLoginError ? <Alert variant="danger">Invalid Credentials!</Alert> : null}
             <Form>

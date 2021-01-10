@@ -1,5 +1,8 @@
+import "./EntrancePage.css";
 import { Redirect } from "react-router-dom";
 import Navbr from "../components/MyNavbar";
+import Sidebar from "../components/Sidebar";
+
 
 function EntrancePage(props) {
     const {activeUser, onLogout} = props;
@@ -9,10 +12,17 @@ function EntrancePage(props) {
     }
 
     return (
-        <div className="p-recipes">
+        <div className="container p-entrance">
             <Navbr activeUser={activeUser} onLogout={onLogout}/>
-            <h1>EntrancePage</h1>
-            <h2> a modalic window of problems and tasts jumps here</h2>
+            <div className="row">
+                <Sidebar/>
+                <div className="col-sm-9">
+                    <h1>דף הבית </h1>
+                    <h2> פה יקפוץ חלון עם בעיות מטרידות</h2>
+                </div>
+            </div>
+            
+            
         </div>
     )
 

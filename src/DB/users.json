@@ -4,15 +4,15 @@
         "fname": "Ory",
         "lname": "Rosin",
         "email": "ory@ory.com",
-        "pwd": "123",
+        "pwd": "1234",
         "role": "user"      
     },
     {
-        "id": 2,
+        "id": 3,
         "fname": "Or",
         "lname": "Calderon",
         "email": "or@or.com",
-        "pwd": "123",
+        "pwd": "1234",
         "role": "admin"      
     }
 ]
