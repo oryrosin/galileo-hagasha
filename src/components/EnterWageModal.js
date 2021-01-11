@@ -8,6 +8,7 @@ function EnterWageModal(props) {
     const [enterGamish, setEnterGamish]= useState(null);
     
     function closeModal() {
+        // TODO: add rest of the things before closing
         handleClose();
     }
     function handleAddWage() {

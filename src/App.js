@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage';
 import EntrancePage from './pages/EntrancePage';
 import SignupPage from './pages/SignupPage';
 import jsonUsers from './DB/users.json';
-import EnterWage from './components/EnterWageModal';
+
 
 function App() {
   const [users, setUsers] = useState(jsonUsers);      // HACK ALERT: holding all users as state only because this is a JSON based application (no server side)
