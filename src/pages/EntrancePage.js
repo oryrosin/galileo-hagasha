@@ -4,6 +4,7 @@ import Navbr from "../components/MyNavbar";
 import Sidebar from "../components/Sidebar";
 import TasksAndProblemsModal from "../components/TasksAndProblemsModal";
 import { useState } from "react";
+import { Row } from "react-bootstrap";
 
 
 function EntrancePage(props) {
@@ -13,19 +14,14 @@ function EntrancePage(props) {
     if (!activeUser) {
         return <Redirect to="/"/>
     }
-// some comment
+
     return (
         <div className="container p-entrance">
             <Navbr activeUser={activeUser} onLogout={onLogout}/>
-            <div className="row">
-                <Sidebar/>
-                <div className="col-sm-9">
-                    <h1>דף הבית </h1>
-                    <TasksAndProblemsModal show={showModal} handleClose={()=>setShowModal(false)}/>
-                </div>
-            </div>
-            
-            
+            <Row>
+                <Sidebar/>  
+            </Row>
+            <TasksAndProblemsModal show={showModal} handleClose={()=>setShowModal(false)}/>
         </div>
     )
 

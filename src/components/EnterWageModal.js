@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap";
-import gamishim from '../DB/gamishim.json';
+import gamishim from "../DB/gamishim.json";
 
 function EnterWageModal(props) {
     const {show, handleClose, addWage}=props;
@@ -8,7 +8,7 @@ function EnterWageModal(props) {
     const [enterGamish, setEnterGamish]= useState(null);
     
     function closeModal() {
-        // TODO: add rest of the things before closing
+        // TODO: add rest of the things before
         handleClose();
     }
     function handleAddWage() {
@@ -29,11 +29,11 @@ function EnterWageModal(props) {
                         <Form.Group controlId="exampleForm.SelectCustom">
                             <Form.Label>Custom select</Form.Label>
                             <Form.Control as="select" custom>
-                            <option>{gamishim[0].name}</option>
-                            <option>{gamishim[1].name}</option>
-                            <option>{gamishim[2].name}</option>
-                            <option>{gamishim[0].name}</option>
-                            <option>{gamishim[1].name}</option>
+                                <option>{gamishim[0].name}</option>
+                                <option>{gamishim[1].name}</option>
+                                <option>{gamishim[2].name}</option>
+                                <option>{gamishim[0].name}</option>
+                                <option>{gamishim[1].name}</option>
                             </Form.Control>
                         </Form.Group>
                     </Form>

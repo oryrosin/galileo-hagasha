@@ -1,0 +1,24 @@
+{"members":
+    [
+        {
+            "name": "עמית יזרעאלי",
+            "gamish": "דרור סופט",
+            "hitagdut":"דרך",
+            "isActive": true
+        },
+        {
+            "name": " יואב שגי",
+            "gamish": "רבידים",
+            "hitagdut":"קשת",
+            "isActive": true
+            
+        },
+        {
+            "name": "גל איציק",
+            "gamish":"יסודות לצמיחה" ,
+            "hitagdut":"דרך",
+            "isActive": true
+            
+        }
+    ]
+}
