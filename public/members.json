@@ -19,6 +19,13 @@
             "hitagdut":"דרך",
             "isActive": true
             
+        },
+        {
+            "name": "יובל גת",
+            "gamish":"רביד" ,
+            "hitagdut":"קהיליה",
+            "isActive": false
+            
         }
     ]
 }

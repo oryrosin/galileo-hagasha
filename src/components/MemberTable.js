@@ -3,7 +3,7 @@ import { Container, Row,  } from 'react-bootstrap';
 import Card from '@material-ui/core/Card';
 
 
-function MemberCard(props){
+function MemberTable(props){
     const {member}= props;
     
     return (
@@ -22,4 +22,4 @@ function MemberCard(props){
         
       );
 }
-export default MemberCard
+export default MemberTable

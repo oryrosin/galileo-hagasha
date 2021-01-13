@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import { Container } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 import MemberModel from "../Models/MemberModel";
-import MemberCard from "./MemberCard";
+import './EditMembers.css'
 
 function EditMembers(props) {
     
@@ -17,13 +17,21 @@ function EditMembers(props) {
         });
     });
 // נכניס לטבלה את כל הפרטים על כל חבר ותוצג טבלה מפולטרת בהתאם לאינפוט פילטר
-    let memberCard;
+    let membersRows;
 
     if (membersData !== []) { 
         const filteredResult = membersData
         .filter(member => member.name.includes(filter));
-        memberCard= filteredResult.map(member=> <MemberCard member={member}/>);
-            };
+        
+        membersRows= filteredResult.map(member=>
+            <tr>
+              <td>{member.name}</td> 
+              <td>{member.gamish}</td> 
+              <td>{member.hitagdut}</td> 
+              <td>{member.isActive? "כן": "לא"}</td>  
+            </tr>
+            );
+        };
 
     return(
         <div id="main"> 
@@ -34,9 +42,18 @@ function EditMembers(props) {
                     <input type="text" placeholder="לא מסננים.." id="filter" value={filter} onChange={(e)=> setFilter(e.target.value)}/>
                 </form>
             </div>
-            <div className="container" id="members-to-show">
-                {memberCard}
-            </div> 
+            <Table responsive striped bordered hover variant="dark">
+                <thead>
+                <tr>
+                    <td>שם</td> 
+                    <td>גמי"ש</td> 
+                    <td>התאגדות</td> 
+                    <td>חבר פעיל?</td>  
+                </tr>
+                </thead>
+                <tbody> {membersRows} </tbody>
+                
+            </Table>
         </div>
     )
 
