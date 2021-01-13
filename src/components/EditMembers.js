@@ -11,15 +11,16 @@ function EditMembers(props) {
     
     
     useEffect(()=>{
-        axios.get("members.json").then(res=>{ 
-        const members= res.data.members.map(plainMember => new MemberModel(plainMember));
+        axios.get("https://api.airtable.com/v0/appivINepijXjwR9W/Table%201?api_key=keyk7ppRxdcVwPFzd").then(res=>{ 
+        const members= res.data.records.map((plainMember,index) => new MemberModel(plainMember.fields, index));
         setMembersData(members)
         });
     });
 // נכניס לטבלה את כל הפרטים על כל חבר ותוצג טבלה מפולטרת בהתאם לאינפוט פילטר
     let membersRows;
 
-    if (membersData !== []) { 
+    if (membersData !== []) {
+       
         const filteredResult = membersData
         .filter(member => member.name.includes(filter));
         
