@@ -10,7 +10,8 @@ function EditMembers(props) {
     const [filter, setFilter]= useState("");
     const [membersData, setMembersData]= useState([]);
     const [showModal, setShowModal] = useState(false);
-    
+    const [selectedMember,setSelectedMember ]= useState(null)
+
     useEffect(()=>{
         axios.get("https://api.airtable.com/v0/appivINepijXjwR9W/Table%201?api_key=keyk7ppRxdcVwPFzd").then(res=>{ 
         const members= res.data.records.map((plainMember,index) => new MemberModel(plainMember.fields, index));
@@ -26,7 +27,10 @@ function EditMembers(props) {
         .filter(member => member.name.includes(filter));
         
         membersRows= filteredResult.map(member=>
-            <tr onDoubleClick={() => setShowModal(true)}>
+            <tr onDoubleClick={() => {
+                setShowModal(true);
+                setSelectedMember(member) 
+                }}>
               <td>{member.name}</td>
               <td>{member.birthDate}</td> 
               <td>{member.aliyaDate}</td>
@@ -64,7 +68,11 @@ function EditMembers(props) {
                 <tbody> {membersRows} </tbody>
                 
             </Table>
-            <MemberEditModal show={showModal} handleClose={() => setShowModal(false)} addRecipe={null}/>
+            <MemberEditModal 
+                show={showModal} 
+                handleClose={() => setShowModal(false)} addRecipe={null}
+                memberToEdit={selectedMember}
+                />
         </div>
     )
 
