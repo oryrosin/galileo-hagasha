@@ -6,7 +6,7 @@ function MyNavbar(props) {
 
     return (
         <Navbar bg="dark" variant="dark" expand="sm">
-            <Navbar.Brand href="#/">מערכת גליל לספירת מרשרשים</Navbar.Brand>
+            <Navbar.Brand href="#/">מערכת גליל </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
