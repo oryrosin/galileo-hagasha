@@ -1,27 +1,50 @@
-import { useState } from "react";
-import { Form, Modal, Button, Col, Row, Table } from "react-bootstrap";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Form, Modal, Button, Table } from "react-bootstrap";
+
 
 function MemberEditModal(props){
-    const { show, handleClose, memberToEdit, addAndSave } = props;
-
+    const { show, handleClose, memberToEdit, selectedId} = props;
+    const [editableMember, setEditableMember]= useState(memberToEdit)
 
     function closeModal() {
+        setEditableMember(memberToEdit)
         handleClose();
-    }
 
-    function handleFileChange(e) {
-        
     }
-
     
 
-    // function handleAddRecipe() {
-    //     // 1) triggers addRecipe at App that will then add this recipe to its recipes state
-    //     addRecipe(name, desc, imgURL);
-
-    //     // 2) cleanup (clean all field + close the modal)
-    //     closeModal();
+    function handleEditMember() {
+    //     let memberOnlyDetailsNoID= {
+    //         name: memberToEdit.name,
+    //         birthDate: memberToEdit.birthDate,
+    //         aliyaDate: memberToEdit.aliyaDate,
+    //         idNum: memberToEdit.idNum,
+    //         gamish: memberToEdit.gamish,
+    //         hitagdut: memberToEdit.hitagdut,
+    //         isActive: memberToEdit.isActive,
+    //         leaveDate: memberToEdit.leaveDate,
     // }
+    
+        axios({
+            method: 'patch',
+            url: "https://api.airtable.com/v0/appivINepijXjwR9W/Table%201?api_key=keyk7ppRxdcVwPFzd",
+            data: { "records": [
+                {"id": memberToEdit.id,
+                 "fields": {
+                    name: editableMember.name,
+                    birthDate: editableMember.birthDate,
+                    aliyaDate: editableMember.aliyaDate,
+                    idNum: editableMember.idNum,
+                    gamish: editableMember.gamish,
+                    hitagdut: editableMember.hitagdut,
+                    isActive: editableMember.isActive,
+                    leaveDate: editableMember.leaveDate}
+                    }
+                ]}
+          }).then(closeModal());
+        
+    }
 
     return (
         <Modal show={show} onHide={closeModal} size="xl" className="c-new-recipe-modal">
@@ -29,7 +52,7 @@ function MemberEditModal(props){
                 <Modal.Title>ערוך פרטי חברה</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <Table responsive striped bordered hover variant="danger">
+            <Table responsive striped bordered hover variant="info">
                 <thead>
                 <tr>
                     <td>שם</td>
@@ -44,14 +67,45 @@ function MemberEditModal(props){
                 </thead>
                 <tbody> 
                     <tr>
-                        <td>{memberToEdit.name}</td>
-                        <td>{memberToEdit.birthDate}</td> 
-                        <td>{memberToEdit.aliyaDate}</td>
-                        <td>{memberToEdit.idNum}</td>
-                        <td>{memberToEdit.gamish}</td> 
-                        <td>{memberToEdit.hitagdut}</td> 
-                        <td>{memberToEdit.isActive==='true'? "כן": "לא"}</td>
-                        <td>{memberToEdit.leaveDate}</td> 
+                        <td>
+                            <input type="text" placeholder={editableMember.name}
+                            onChange={(e)=> 
+                                {console.log( e.target.value)
+                                setEditableMember({...editableMember,name: e.target.value})}} />
+                        </td>
+                        {/* <td contentEditable onInput={(e)=> 
+                            {console.log( e.target.innerText)
+                            setEditableMember({...editableMember,name: e.target.innerText})}}>
+                                {editableMember.name}
+                        </td> */}
+                        <td contentEditable onInput={(e)=> 
+                            setEditableMember({...editableMember,birthDate: e.target.innerText})}>
+                                {editableMember.birthDate}
+                        </td>
+                        <td contentEditable onInput={(e)=> 
+                            setEditableMember({...editableMember,aliyaDate: e.target.innerText})}>
+                                {editableMember.aliyaDate}
+                        </td>
+                        <td contentEditable onInput={(e)=> 
+                            setEditableMember({...editableMember,idNum:e.target.innerText})}>
+                                {editableMember.idNum}
+                        </td>
+                        <td contentEditable onInput={(e)=> 
+                            setEditableMember({...editableMember,gamish :e.target.innerText})}>
+                                {editableMember.gamish}
+                        </td>
+                        <td contentEditable onInput={(e)=> 
+                            setEditableMember({...editableMember,hitagdut:e.target.innerText})}>
+                                {editableMember.hitagdut}
+                        </td>
+                        <td contentEditable onInput={(e)=> 
+                            setEditableMember({...editableMember,isActive:e.target.innerText})}>
+                                {editableMember.isActive==='true'? "כן": "לא"}
+                        </td>
+                        <td contentEditable onInput={(e)=> 
+                            setEditableMember({...editableMember,hitagdut:e.target.innerText})}>
+                                {editableMember.leaveDate}
+                        </td> 
                     </tr>
                 </tbody>
             </Table>
@@ -61,8 +115,7 @@ function MemberEditModal(props){
                     בטלי
                 </Button>
                 <Button variant="primary" 
-                // onClick={handleAddRecipe}
-                >
+                onClick={handleEditMember}>
                     שמור שינויים
                 </Button>
             </Modal.Footer>

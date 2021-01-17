@@ -11,26 +11,28 @@ function EditMembers(props) {
     const [membersData, setMembersData]= useState([]);
     const [showModal, setShowModal] = useState(false);
     const [selectedMember,setSelectedMember ]= useState(null)
-
+    const [selectedId, setSelectedId] =useState(null)
+    
     useEffect(()=>{
         axios.get("https://api.airtable.com/v0/appivINepijXjwR9W/Table%201?api_key=keyk7ppRxdcVwPFzd").then(res=>{ 
-        const members= res.data.records.map((plainMember,index) => new MemberModel(plainMember.fields, index));
-        setMembersData(members)
-        });
-    },[]);
-// נכניס לטבלה את כל הפרטים על כל חבר ותוצג טבלה מפולטרת בהתאם לאינפוט פילטר
-    let membersRows;
-
-    if (membersData !== []) {
+        const members= res.data.records.map((plainMember) => new MemberModel(plainMember.fields, plainMember.id));
+        setMembersData(members);
        
+        })
+    },[]);
+
+    
+    let membersRows;
+    if (membersData !== []) {
         const filteredResult = membersData
         .filter(member => member.name.includes(filter));
         
         membersRows= filteredResult.map(member=>
             <tr onDoubleClick={() => {
                 setShowModal(true);
-                setSelectedMember(member) 
-                }}>
+                setSelectedMember(member)
+                setSelectedId(member.id) 
+                }}> 
               <td>{member.name}</td>
               <td>{member.birthDate}</td> 
               <td>{member.aliyaDate}</td>
@@ -42,6 +44,7 @@ function EditMembers(props) {
             </tr>
             );
         };
+        console.log(selectedId);
 
     return(
         <div id="main"> 
@@ -66,13 +69,12 @@ function EditMembers(props) {
                 </tr>
                 </thead>
                 <tbody> {membersRows} </tbody>
-                
             </Table>
-            <MemberEditModal 
+            {selectedMember&&<MemberEditModal 
                 show={showModal} 
-                handleClose={() => setShowModal(false)} addRecipe={null}
-                memberToEdit={selectedMember}
-                />
+                handleClose={() => {setShowModal(false); setSelectedMember(null)}} addAndSave={null}
+                memberToEdit={selectedMember} selectedId={selectedId}
+                />}
         </div>
     )
 
