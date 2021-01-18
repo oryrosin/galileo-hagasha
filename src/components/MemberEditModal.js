@@ -1,31 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Form, Modal, Button, Table } from "react-bootstrap";
-
+import './MemberEditModal.css'
 
 function MemberEditModal(props){
-    const { show, handleClose, memberToEdit, selectedId} = props;
+    const { show, handleClose, memberToEdit} = props;
     const [editableMember, setEditableMember]= useState(memberToEdit)
 
     function closeModal() {
         setEditableMember(memberToEdit)
         handleClose();
-
     }
     
 
     function handleEditMember() {
-    //     let memberOnlyDetailsNoID= {
-    //         name: memberToEdit.name,
-    //         birthDate: memberToEdit.birthDate,
-    //         aliyaDate: memberToEdit.aliyaDate,
-    //         idNum: memberToEdit.idNum,
-    //         gamish: memberToEdit.gamish,
-    //         hitagdut: memberToEdit.hitagdut,
-    //         isActive: memberToEdit.isActive,
-    //         leaveDate: memberToEdit.leaveDate,
-    // }
-    
         axios({
             method: 'patch',
             url: "https://api.airtable.com/v0/appivINepijXjwR9W/Table%201?api_key=keyk7ppRxdcVwPFzd",
@@ -65,47 +53,53 @@ function MemberEditModal(props){
                     <td>תאריך עזיבה</td>  
                 </tr>
                 </thead>
-                <tbody> 
+                <tbody id="modal-edit-member"> 
                     <tr>
                         <td>
-                            <input type="text" placeholder={editableMember.name}
+                            <input type="text" value={editableMember.name}
                             onChange={(e)=> 
                                 {console.log( e.target.value)
                                 setEditableMember({...editableMember,name: e.target.value})}} />
                         </td>
-                        {/* <td contentEditable onInput={(e)=> 
-                            {console.log( e.target.innerText)
-                            setEditableMember({...editableMember,name: e.target.innerText})}}>
-                                {editableMember.name}
-                        </td> */}
-                        <td contentEditable onInput={(e)=> 
-                            setEditableMember({...editableMember,birthDate: e.target.innerText})}>
-                                {editableMember.birthDate}
+                        <td>
+                            <input type="text" value={editableMember.birthDate}
+                            onChange={(e)=> 
+                                {console.log( e.target.value)
+                                setEditableMember({...editableMember,birthDate: e.target.value})}} />
                         </td>
-                        <td contentEditable onInput={(e)=> 
-                            setEditableMember({...editableMember,aliyaDate: e.target.innerText})}>
-                                {editableMember.aliyaDate}
+                        <td>
+                            <input type="text" value={editableMember.aliyaDate}
+                            onChange={(e)=> 
+                                {console.log( e.target.value)
+                                setEditableMember({...editableMember,aliyaDate: e.target.value})}} />
                         </td>
-                        <td contentEditable onInput={(e)=> 
-                            setEditableMember({...editableMember,idNum:e.target.innerText})}>
-                                {editableMember.idNum}
+                        <td>
+                            {editableMember.idNum}
                         </td>
-                        <td contentEditable onInput={(e)=> 
-                            setEditableMember({...editableMember,gamish :e.target.innerText})}>
-                                {editableMember.gamish}
+                        <td>
+                            <input type="text" value={editableMember.gamish}
+                            onChange={(e)=> 
+                                {console.log( e.target.value)
+                                setEditableMember({...editableMember,gamish: e.target.value})}} />
                         </td>
-                        <td contentEditable onInput={(e)=> 
-                            setEditableMember({...editableMember,hitagdut:e.target.innerText})}>
-                                {editableMember.hitagdut}
+                        <td>
+                            <input type="text" value={editableMember.hitagdut}
+                            onChange={(e)=> 
+                                {console.log( e.target.value)
+                                setEditableMember({...editableMember,hitagdut: e.target.value})}} />
                         </td>
-                        <td contentEditable onInput={(e)=> 
-                            setEditableMember({...editableMember,isActive:e.target.innerText})}>
-                                {editableMember.isActive==='true'? "כן": "לא"}
+                        <td>
+                            <input type="text" value={editableMember.isActive}
+                            onChange={(e)=> 
+                                {console.log( e.target.value)
+                                setEditableMember({...editableMember,isActive: e.target.value})}} />
                         </td>
-                        <td contentEditable onInput={(e)=> 
-                            setEditableMember({...editableMember,hitagdut:e.target.innerText})}>
-                                {editableMember.leaveDate}
-                        </td> 
+                        <td>
+                            <input type="text" value={editableMember.leaveDate} 
+                            onChange={(e)=> 
+                                {console.log( e.target.value)
+                                setEditableMember({...editableMember,leaveDate: e.target.value})}} />
+                        </td>
                     </tr>
                 </tbody>
             </Table>

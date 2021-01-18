@@ -10,18 +10,18 @@ function EditMembers(props) {
     const [filter, setFilter]= useState("");
     const [membersData, setMembersData]= useState([]);
     const [showModal, setShowModal] = useState(false);
-    const [selectedMember,setSelectedMember ]= useState(null)
-    const [selectedId, setSelectedId] =useState(null)
+    const [selectedMember,setSelectedMember ]= useState(null);
+    
     
     useEffect(()=>{
-        axios.get("https://api.airtable.com/v0/appivINepijXjwR9W/Table%201?api_key=keyk7ppRxdcVwPFzd").then(res=>{ 
-        const members= res.data.records.map((plainMember) => new MemberModel(plainMember.fields, plainMember.id));
-        setMembersData(members);
-       
-        })
-    },[]);
+        async function ory(){
+            const res= await axios.get("https://api.airtable.com/v0/appivINepijXjwR9W/Table%201?api_key=keyk7ppRxdcVwPFzd");
+            const members= res.data.records.map((plainMember) => new MemberModel(plainMember.fields, plainMember.id));
+            setMembersData(members);
+        }
+        ory();
+        },[showModal]);
 
-    
     let membersRows;
     if (membersData !== []) {
         const filteredResult = membersData
@@ -31,7 +31,6 @@ function EditMembers(props) {
             <tr onDoubleClick={() => {
                 setShowModal(true);
                 setSelectedMember(member)
-                setSelectedId(member.id) 
                 }}> 
               <td>{member.name}</td>
               <td>{member.birthDate}</td> 
@@ -44,8 +43,7 @@ function EditMembers(props) {
             </tr>
             );
         };
-        console.log(selectedId);
-
+        
     return(
         <div id="main"> 
             <h1>חברים</h1>
@@ -72,11 +70,10 @@ function EditMembers(props) {
             </Table>
             {selectedMember&&<MemberEditModal 
                 show={showModal} 
-                handleClose={() => {setShowModal(false); setSelectedMember(null)}} addAndSave={null}
-                memberToEdit={selectedMember} selectedId={selectedId}
+                handleClose={() => {setShowModal(false); setSelectedMember(null);}} 
+                memberToEdit={selectedMember} 
                 />}
         </div>
     )
-
 }
 export default EditMembers
