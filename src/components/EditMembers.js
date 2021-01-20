@@ -14,7 +14,7 @@ function EditMembers(props) {
     
     
     useEffect(()=>{
-        async function editSelectedMember(){ debugger;
+        async function editSelectedMember(){
             const res= await axios.get("https://api.airtable.com/v0/appivINepijXjwR9W/Table%201?api_key=keyk7ppRxdcVwPFzd");
             const members= res.data.records.map((plainMember) => new MemberModel(plainMember.fields, plainMember.id));
             setMembersData(members);

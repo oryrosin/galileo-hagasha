@@ -1,20 +1,16 @@
 import { Button, Modal } from "react-bootstrap";
+import "./TasksAndProblemsModal.css";
 
 function TasksAndProblemsModal(props) {
     const {show, handleClose}=props;
+    
     return(
-        <Modal show={show} onHide={handleClose} className="new-modal">
-            <Modal.Header closeButton>
-                <Modal.Title>בלתי משוייכים ושאר מרעין בישין</Modal.Title>
-            </Modal.Header>
-                <Modal.Body>
-                    <p>ריג'קטים למינהם שיבואו מאיפשהו</p>
-                </Modal.Body>
+        <Modal show={show} onHide={handleClose} size="lg">
+            <Modal.Body id="problems">
+                <img  src="rejects.jpg" alt="problems"/>
+            </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    סגרי
-                </Button>
-            
+                <Button variant="secondary" onClick={handleClose}>סגרי</Button>
             </Modal.Footer>
         </Modal>
     )
