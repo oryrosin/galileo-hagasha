@@ -20,7 +20,6 @@ function App() {
     setActiveUser(loggedinUser);
   }
 
-
   return (
     <HashRouter>
       <Switch>

@@ -14,12 +14,12 @@ function EditMembers(props) {
     
     
     useEffect(()=>{
-        async function ory(){
+        async function editSelectedMember(){ debugger;
             const res= await axios.get("https://api.airtable.com/v0/appivINepijXjwR9W/Table%201?api_key=keyk7ppRxdcVwPFzd");
             const members= res.data.records.map((plainMember) => new MemberModel(plainMember.fields, plainMember.id));
             setMembersData(members);
         }
-        ory();
+        editSelectedMember() ;
         },[showModal]);
 
     let membersRows;

@@ -10,7 +10,7 @@ function MyNavbar(props) {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    {activeUser ? <Nav.Link href="#/entrance"> <i class="fas fa-home fa-lg"></i>בית </Nav.Link> : null}
+                    {activeUser ? <Nav.Link href="#/entrance"> <i className="fas fa-home fa-lg"></i>בית </Nav.Link> : null}
                 </Nav>
                 <Nav className="ml-auto">
                     {activeUser ? null : <Nav.Link href="#/login">התחבר/י</Nav.Link>}

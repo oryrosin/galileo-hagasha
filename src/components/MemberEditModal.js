@@ -30,8 +30,7 @@ function MemberEditModal(props){
                     leaveDate: editableMember.leaveDate}
                     }
                 ]}
-          }).then(closeModal());
-        
+          }).then(()=>closeModal());
     }
 
     return (
