@@ -53,6 +53,7 @@ function WagesSection(props) {
 
     return (
         <>
+            <h1>שכר ועונש</h1>
             <Form id="wage-section-form">
                 <Form.Group as={Row} controlId="formHorizontalEmail">
                     <Form.Label column sm={2}> התאגדות</Form.Label>
