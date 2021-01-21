@@ -7,8 +7,11 @@
    padding-right: 30px;
     
 }
-/* #wage-section-form>.form-group>input{
-    width: 90%;
-    margin: 5px, auto;
-    
-} */
+#test-table-xls-button{
+    background-color: #418899;
+    height: 70px;
+    width: 8em;
+    border: none;
+    border-radius: 5%;
+    color: white;
+}
