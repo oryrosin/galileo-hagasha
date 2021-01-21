@@ -49,7 +49,6 @@ function EditMembers(props) {
             <h1>חברים</h1>
             <div className="navbar-nav row">
                 <form>
-                    <label htmlFor="filter" > </label>
                     <input type="text" placeholder="לא מסננים.." id="filter" value={filter} onChange={(e)=> setFilter(e.target.value)}/>
                 </form>
             </div>

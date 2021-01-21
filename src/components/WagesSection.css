@@ -1,0 +1,14 @@
+#wage-section-form{
+    color: white;
+    background-color: rgba(0, 128, 128, 0.4);
+    padding: 10px;
+}
+#wage-section-form>.form-group>label{
+   padding-right: 30px;
+    
+}
+/* #wage-section-form>.form-group>input{
+    width: 90%;
+    margin: 5px, auto;
+    
+} */

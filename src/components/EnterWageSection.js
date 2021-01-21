@@ -11,7 +11,7 @@ function EnterWageSection(props) {
     
     
     function handleAddWage() {
-        alert("hi");
+        alert("הקובץ הוזן בהצלחה למערכת");
         }
     function readExcel(file){
         let promise= new Promise((resolve, reject)=>{
@@ -75,11 +75,12 @@ function EnterWageSection(props) {
                     </Form.Control>
                 </Form.Group>
                 </Col>
-                <Button variant="primary" onClick={handleAddWage}>הוסף קובץ</Button>
+                <Button variant="info" onClick={handleAddWage}>הוסף קובץ</Button>
                 
             </Container>
-            {readFile!==[]?<Table striped bordered hover>
-                <thead>
+            {readFile!==[]?
+            <Table striped hover variant="dark">
+                <thead className="table-head">
                     <tr>
                         <td>מס.עובד</td>
                         <td>ת.זהות</td>

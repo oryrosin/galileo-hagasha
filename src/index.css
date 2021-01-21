@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family:'Heebo', sans-serif;
   direction: rtl;
   text-align: !important right;
@@ -8,5 +7,5 @@ body {
 #root{
   direction: rtl;
   text-align: right;
-  
+  margin: 10px;
 }
