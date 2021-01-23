@@ -15,6 +15,7 @@ class WageModel {
             this.pension= fields.pension;
             this.gamish= fields.gamish;
             this.membersTax= fields.membersTax;
+            this.maagalHaim= fields.maagalHaim;
             this.id=id;
         }   
     }
