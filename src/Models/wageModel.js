@@ -17,6 +17,7 @@ class WageModel {
             this.membersTax= fields.membersTax;
             this.maagalHaim= fields.maagalHaim;
             this.id=id;
+            this.date= new Date(this.year+"-"+this.month) 
         }   
     }
 export default WageModel

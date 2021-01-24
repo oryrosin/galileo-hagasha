@@ -1,7 +1,7 @@
 body {
-  font-family:'Heebo', sans-serif;
+  font-family: 'Assistant', sans-serif !important;
   direction: rtl;
-  text-align: !important right;
+  text-align:  right !important;
 }
 
 #root{

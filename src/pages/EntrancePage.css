@@ -4,3 +4,7 @@
     background-size: 95%;
     margin: auto;
 }
+
+body{
+    font-family: 'Assistant', sans-serif !important;
+}

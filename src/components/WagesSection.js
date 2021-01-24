@@ -13,6 +13,8 @@ function WagesSection(props) {
     const [filter2, setFilter2] = useState("")
     const [filter3, setFilter3] = useState("")
     const [filter4, setFilter4] = useState("")
+    const [filter5, setFilter5] = useState("2004-12")
+    const [filter6, setFilter6] = useState("2030-01")
    
     const [wagesData, setWagesData] = useState(null)
     // axios get
@@ -34,29 +36,31 @@ function WagesSection(props) {
             &&(wage.fName.includes(filter1) || wage.lName.includes(filter1))
             && (wage.hitagdut? wage.hitagdut.includes(filter2): true)
             && (wage.gamish? wage.gamish.includes(filter3):true)
+            && (new Date(filter5) < wage.date&& wage.date< new Date(filter6))
             );
+        
 
-    wagesToShow = filteredRows.map((wage) =>
-        <tr>
-            <td>{wage.maagalHaim}</td>
-            <td>{wage.hitagdut}</td>
-            <td>{wage.fName}</td>
-            <td>{wage.lName}</td>
-            <td>{wage.idNum}</td>
-            <td>{wage.month}</td>
-            <td>{wage.year}</td>
-            <td>{wage.gamish}</td>
-            <td>{wage.employerCost}</td>
-            <td>{wage.bruto}</td>
-            <td>{wage.neto}</td>
-            <td>{wage.socialSecutrity}</td>
-            <td>{wage.pension}</td>
-            <td>{wage.precentage}</td> 
-            <td>{wage.membersTax}</td>
-            <td><FaFileExcel /></td>
-            <td><FaFileExcel /></td>
-            <td><FaFileExcel /></td>
-        </tr>
+        wagesToShow = filteredRows.map((wage) =>
+            <tr>
+                <td>{wage.maagalHaim}</td>
+                <td>{wage.hitagdut}</td>
+                <td>{wage.fName}</td>
+                <td>{wage.lName}</td>
+                <td>{wage.idNum}</td>
+                <td>{wage.month}</td>
+                <td>{wage.year}</td>
+                <td>{wage.gamish}</td>
+                <td>{wage.employerCost}</td>
+                <td>{wage.bruto}</td>
+                <td>{wage.neto}</td>
+                <td>{wage.socialSecutrity}</td>
+                <td>{wage.pension}</td>
+                <td>{wage.precentage}</td> 
+                <td>{wage.membersTax}</td>
+                <td><FaFileExcel /></td>
+                <td><FaFileExcel /></td>
+                <td><FaFileExcel /></td>
+            </tr>
         );
     }
 
@@ -87,9 +91,11 @@ function WagesSection(props) {
                 </Form.Group>
                 <Form.Group as={Row} controlId="formWageFilter">
                     <Form.Label column sm={2}>מתאריך</Form.Label>
-                    <Col sm={4}><Form.Control type="text" /></Col>
-                    <Form.Label column sm={2}>עד תאריך</Form.Label>
-                    <Col sm={4}><Form.Control type="text" /></Col>
+                    <Col sm={4}><Form.Control type="month" min="2004-12"
+                        value={filter5} onChange={(e) => setFilter5(e.target.value)}/></Col>
+                    <Form.Label style={{display: filter5? 'block': 'none'}} column sm={2}>עד תאריך</Form.Label>
+                    <Col sm={4} style={{display: filter5? 'block': 'none'}}><Form.Control type="month" min="2004-12"
+                        value={filter6} onChange={(e) => setFilter6(e.target.value)}/></Col>
                 </Form.Group>
                 
                 <Form.Group as={Row} controlId="formWageFilter">
